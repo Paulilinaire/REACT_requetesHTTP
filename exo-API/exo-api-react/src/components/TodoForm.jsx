@@ -51,6 +51,7 @@ const TodoForm = () => {
             <div className='text-end mb-3'>
                 <button className="btn btn-primary" disabled ref={submitButtonRef}>Ajouter</button>
             </div>
+            <hr/>
         </form>
         </>
     )

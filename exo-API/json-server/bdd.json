@@ -1,28 +1,3 @@
 {
-  "toDos": [
-    {
-      "title": "manger des pâtes",
-      "id": 2
-    },
-    {
-      "title": "prendre des cours de chant",
-      "id": 3
-    },
-    {
-      "title": "voyager en Asie",
-      "id": 4
-    },
-    {
-      "title": "manger des pâtes",
-      "id": 5
-    },
-    {
-      "title": "manger des pâtes",
-      "id": 6
-    },
-    {
-      "title": "485485",
-      "id": 7
-    }
-  ]
+  "toDos": []
 }
