@@ -51,7 +51,7 @@ const TodoDisplay = (props) => {
             <span>{foundtodo.title}</span>
             <div className="d-flex ">
                 <button className="btn btn-warning me-3">Modifier</button>
-                <button onClick={deleteTodos(todoId)}className="btn btn-danger">Supprimer</button>
+                <button onClick={deleteTodos}className="btn btn-danger">Supprimer</button>
             </div>
         </li>
     )
