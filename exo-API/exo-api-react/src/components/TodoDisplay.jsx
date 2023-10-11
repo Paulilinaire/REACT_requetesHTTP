@@ -3,47 +3,44 @@ import { TodoContext } from '../contexts/TodoContext'
 import axios from 'axios';
 
 const TodoDisplay = (props) => {
-    const { todoId } = props
+    const { id } = props
     const context = useContext(TodoContext)
-    const [todos, setTodos ] = useState([])
+    const [todos, setTodos ] = useState(null)
 
-    const foundtodo = context.todos.find(t => t.id === todoId)
+    const foundtodo = context.todos.find(t => t.id === id)
     console.log(foundtodo);
 
     useEffect(() => {
-        axios.get("http://localhost:5001/toDos")
+        axios.get(`http://localhost:5001/toDos/${id}`)
         .then (response => {
             console.log(response.data);
         })
         .catch(error => {
             console.error("Erreur: ",error);
           })
-    },[])
+    },[id])
 
-// const editTodos = () => {
-//     const id = 2
-//     axios.put(`http://localhost:5001/toDos/${id}`, {title : "manger des pâtes"})
-//     .then(response => {
-//       console.log(response.data);
-//     })
-//     .catch(error => {
-//       console.error("Erreur: ",error);
-//     })
-//   }
-
-  const deleteTodos = (todoId) => {
-    axios.delete(`http://localhost:5001/toDos/${todoId}`)
-    .then(() =>{
-        console.log("todos avec id " + todoId + " supprimer");
-        const removeTask = todos.filter((todo) => {
-          return todo.id !== todoId;
-        });
-        setTodos(removeTask);
-    })
-    .catch(error => {
-      console.error("Erreur: ",error);
-    })
-  }
+    
+    const deleteTodos = () => {
+        axios.delete(`http://localhost:5001/toDos/${id}`)
+        .then(() =>{
+            console.log("todos avec id " + id + " supprimer");
+            //filter ton setTodos
+        })
+        .catch(error => {
+            console.error("Erreur: ",error);
+        })
+    }
+    // const editTodos = () => {
+    //     const id = 2
+    //     axios.put(`http://localhost:5001/toDos/${id}`, {title : "manger des pâtes"})
+    //     .then(response => {
+    //       console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //       console.error("Erreur: ",error);
+    //     })
+    //   }
 
 
     return (
@@ -51,7 +48,7 @@ const TodoDisplay = (props) => {
             <span>{foundtodo.title}</span>
             <div className="d-flex ">
                 <button className="btn btn-warning me-3">Modifier</button>
-                <button onClick={deleteTodos}className="btn btn-danger">Supprimer</button>
+                <button onClick={deleteTodos(id)}className="btn btn-danger">Supprimer</button>
             </div>
         </li>
     )
