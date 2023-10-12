@@ -25,7 +25,7 @@ const TodoDisplay = (props) => {
         axios.delete(`http://localhost:5001/toDos/${id}`)
         .then(() =>{
             console.log("todos avec id " + id + " supprimer");
-            //filter ton setTodos
+            //filter setTodos
         })
         .catch(error => {
             console.error("Erreur: ",error);

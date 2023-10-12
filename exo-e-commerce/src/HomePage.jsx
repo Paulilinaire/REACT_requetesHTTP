@@ -1,11 +1,10 @@
 
-import './App.css';
 import { Link } from 'react-router-dom';
 
-function App() {
+function HomePage() {
 
   const setStorage = () => {
-    console.log("j'appuie sur le bouton");
+    console.log("j'apuie sur le bouton");
     localStorage.setItem("role", "Admin")
   }
 
@@ -13,7 +12,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="HomePage">
       <Link to={"/account"}>Go to Account</Link>
       <br></br>
       <Link to={"/account2"}>Go to Account2</Link>
@@ -23,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;

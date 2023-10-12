@@ -9,7 +9,6 @@ const TodoForm = () => {
     const submitButtonRef = useRef() 
 
     
-    
     useEffect(() => {
         axios.get ("http://localhost:5001/toDos")
         .then (response => {
@@ -32,7 +31,7 @@ const TodoForm = () => {
         setTodos((previousTasks => [...previousTasks, newTask]))
         })
         .catch(error => {
-          console.error("Erreur: ",error);
+          console.error("Erreur: ", error);
         })
       }
 

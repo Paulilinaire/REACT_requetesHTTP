@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Account = () => {
+const AddProduct = () => {
     const navigate = useNavigate()
 
     const clearStorage = () => {
@@ -20,4 +20,4 @@ const Account = () => {
     )
 }
 
-export default Account
+export default AddProduct
