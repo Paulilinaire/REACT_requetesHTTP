@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     {
         path: "/account2",
         element: <Account/>,
-        loader: () => authCheck("Admin")
+        loader: () => authCheck("Admin") // avec le loader et grâce à la fonction authCheck, nous allons verifier avant chargement de la page si Admin est = à admin
     }
 ])
 
