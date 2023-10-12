@@ -1,10 +1,19 @@
-import { Form, createBrowserRouter } from "react-router-dom"
+import { redirect, createBrowserRouter } from "react-router-dom"
 import App from './App'
 import ProtectedRoute from "./components/ProtectedRoute"
 import Account from "./components/Account"
-import { redirect } from "react-router-dom"
+import Form from "./components/Form"
 
-const authCheck = (role) => {
+// const authCheck = (role) => { //sans local storage
+//     if (role === "Admin"){
+//         return true
+//     } else {
+//         return redirect("/auth")
+//     }
+// } 
+
+const authCheck = () => { //avec Admin dans local storage
+    const role = localStorage.getItem("role")
     if (role === "Admin"){
         return true
     } else {
