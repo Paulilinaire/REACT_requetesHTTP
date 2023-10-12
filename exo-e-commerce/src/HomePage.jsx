@@ -9,7 +9,10 @@ function HomePage() {
   useEffect(() => {
     axios.get('http://localhost:5000/products')
     .then(response => {
-        setProducts(prev => [...response.data]) 
+        setProducts(response.data) 
+    })
+    .catch(error => {
+      console.error("Erreur : ",error)
     })
 },[])
 
