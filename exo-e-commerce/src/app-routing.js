@@ -1,7 +1,10 @@
 import { redirect, createBrowserRouter } from "react-router-dom"
 import HomePage from './HomePage'
-import AddProduct from "./components/AddProduct"
-import DetailsProductPage from "./components/DetailsProductPage"
+import DetailsProductPage from "./routes/DetailsProductPage"
+import AddProductAdmin from "./routes/AddProductAdmin"
+import ShoppingCartPage from "./routes/ShoppingCartPage"
+import AdminLoginPage from "./routes/AdminLoginPage"
+
 
 const authCheck = (role) => { 
     if (role === "Admin"){
@@ -17,12 +20,20 @@ const router = createBrowserRouter([
         element: <HomePage />
     },
     {
-        path: "/detailsProductPage",
+        path: "/detailsProductPage/:id",
         element: <DetailsProductPage />
     },
     {
-        path: "/addProduct",
-        element: <AddProduct/>,
+        path: "/shoppingCartPage",
+        element: <ShoppingCartPage />
+    },
+    {
+        path: "/adminLoginPage",
+        element: <AdminLoginPage />
+    },
+    {
+        path: "/addProductAdmin",
+        element: <AddProductAdmin/>,
         loader: () => authCheck("Admin") // avec le loader et grâce à la fonction authCheck, nous allons verifier avant chargement de la page si Admin est = à admin
     }
 ])

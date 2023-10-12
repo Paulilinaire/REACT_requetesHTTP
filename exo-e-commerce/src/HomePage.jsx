@@ -1,23 +1,36 @@
-
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react"
+import axios from 'axios'
 
 function HomePage() {
 
-  const setStorage = () => {
-    console.log("j'apuie sur le bouton");
-    localStorage.setItem("role", "Admin")
-  }
+  const [products, setProducts] = useState([])
 
-
+  useEffect(() => {
+    axios.get('http://localhost:5000/products')
+    .then(response => {
+        setProducts(prev => [...response.data]) 
+    })
+},[])
 
 
   return (
     <div className="HomePage">
-      <Link to={"/account"}>Go to Account</Link>
+      <Link to={"/"}>Home</Link>
       <br></br>
-      <Link to={"/account2"}>Go to Account2</Link>
+      <Link to={"/addProductAdmin"}>Admin</Link>
       <br></br>
-      <button onClick={setStorage}>Log in</button>
+      <Link to={"/shoppingCartPage"}>Cart</Link>
+      <br></br> 
+      <hr />
+      <h1>Products List</h1>
+      <ul>
+          {products.map((product) => (
+                <li key={product.id}>{product.title}
+                <Link to={`detailsProductPage/${product.id}`}> voir le détail </Link>
+                </li>
+            ))}
+      </ul>
     </div>
   );
 }

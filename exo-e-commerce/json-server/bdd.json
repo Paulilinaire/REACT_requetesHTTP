@@ -1,0 +1,24 @@
+{
+    "products": [
+      {
+        "title": "collier",
+        "price": "14€",
+        "id": 1
+      },
+      {
+        "title": "bracelet",
+        "price": "10€",
+        "id": 2
+      },
+      {
+        "title": "boucles d'oreilles",
+        "price": "24€",
+        "id": 3
+      },
+      {
+        "title": "bagues",
+        "price": "15€",
+        "id": 4
+      }
+    ]
+  }
