@@ -13,16 +13,12 @@ const ShoppingCartPage = () => {
     console.log(somme); 
 
     const deleteProduct = (e) => {
-    const productDeleted = {...cart}
-    console.log("productDeleted"+productDeleted);
-    setCart(prevProduct => prevProduct.filter(p => p !== productDeleted))
-    console.log("productDeleted "+productDeleted);
-    console.log(cart);
+
 }
 
     return(
         <>
-        <div className="col-10 offset-1 rounded p-3 bg-light text-dark border border-dark">
+        <div className="col-10 offset-1 rounded p-3 bg-light text-dark borderborder-dark">
             <h1>Panier</h1>
             <ul>
                 {cart.map((product,index)=> <div><li className="mb-3" key={index}> <b>Article :</b> {product.title} - <b>Prix : </b>{product.price}€
