@@ -22,6 +22,7 @@ const ShoppingCartPage = () => {
 
     return(
         <>
+        <div className="col-10 offset-1 rounded p-3 bg-light text-dark border border-dark">
             <h1>Panier</h1>
             <ul>
                 {cart.map((product,index)=> <div><li className="mb-3" key={index}> <b>Article :</b> {product.title} - <b>Prix : </b>{product.price}€
@@ -32,6 +33,7 @@ const ShoppingCartPage = () => {
             </div>
             <hr />
             <p className="display-6 text-end fw-bold" >Total : {somme}€</p>
+        </div>
         </>
     )
 }

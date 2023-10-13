@@ -6,6 +6,7 @@ import ErrorPage from "./routes/ErrorPage"
 import ProtectedRoute from "./routes/ProtectedRoute"
 import App from "./App"
 import HomePage from "./routes/HomePage"
+import AdminLoginPage from "./routes/AdminLoginPage"
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/adminLoginPage",
-                element: <AddProductAdmin />
+                element: <AdminLoginPage />
             },
             {
                 path: "/addProductAdmin",

@@ -34,6 +34,7 @@ const DetailsProductPage = () =>{
 
     return (
         <>  
+        <div className="col-10 offset-1 rounded p-3 bg-light text-dark border border-dark">
             <h1>Détails produits</h1>
             <ul>       
                 <li>{product.title}</li>
@@ -41,6 +42,7 @@ const DetailsProductPage = () =>{
                 <li>{product.price}€</li>
             </ul>
                 <button onClick={addCart} className="btn btn-outline-success">Ajouter au panier</button>
+        </div>
         </>
     )
 }
