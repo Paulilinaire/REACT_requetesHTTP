@@ -1,32 +1,37 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from 'axios';
+import ProductContext from "../contexts/ProductContext";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 const ShoppingCartPage = () => {
     const {id} = useParams();
-    const [product, setProduct] = useState(null);
+    const { productList, setProductList, cart, setCart } = useContext(ProductContext)
+    console.table(cart);
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/products/${id}`)
-        .then (response => {
-            setProduct(response.data)})
-        }, [id])  
+    const valeurs = cart.map(product=>product.price)
+    const somme = valeurs.reduce((total, valeur)=> total + valeur)
+    console.log(somme); 
 
-    if(product == null){ // besoin d'un conditionnel car le useEffect est lu après le useState. Sans conditionnel, le useState renvoit title = null et donc pas d'affichage
-        return <><p>Chargement</p></>
-    }
+    const deleteProduct = (e) => {
+    const productDeleted = {...cart}
+    console.log("productDeleted"+productDeleted);
+    setCart(prevProduct => prevProduct.filter(p => p !== productDeleted))
+    console.log("productDeleted "+productDeleted);
+    console.log(cart);
+}
 
-
-    return (
+    return(
         <>
-        <h1>Panier</h1>
-        <ul>
-            <li>{product.title}-{product.price}</li>
-        </ul>
-        <br />
-        <hr />
-        <p>Total:</p>
-
+            <h1>Panier</h1>
+            <ul>
+                {cart.map((product,index)=> <div><li className="mb-3" key={index}> <b>Article :</b> {product.title} - <b>Prix : </b>{product.price}€
+                <button className="btn btn-outline-danger mx-3" onClick={deleteProduct}>Supprimer</button></li></div>)} 
+            </ul>
+            <div class="">
+                <Link to={"/"} className="btn btn-outline-success mt-3 mb-2"type="button"><i class="bi bi-patch-plus"></i> Ajouter des articles au panier</Link>
+            </div>
+            <hr />
+            <p className="display-6 text-end fw-bold" >Total : {somme}€</p>
         </>
     )
 }

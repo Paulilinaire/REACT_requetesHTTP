@@ -1,41 +1,40 @@
-import { redirect, createBrowserRouter } from "react-router-dom"
-import HomePage from './HomePage'
+import { createBrowserRouter } from "react-router-dom"
 import DetailsProductPage from "./routes/DetailsProductPage"
 import AddProductAdmin from "./routes/AddProductAdmin"
 import ShoppingCartPage from "./routes/ShoppingCartPage"
-import AdminLoginPage from "./routes/AdminLoginPage"
+import ErrorPage from "./routes/ErrorPage"
+import ProtectedRoute from "./routes/ProtectedRoute"
+import App from "./App"
+import HomePage from "./routes/HomePage"
 
-
-const authCheck = (role) => { 
-    if (role === "Admin"){
-        return true
-    } else {
-        return redirect("/")
-    }
-} 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <HomePage />
-    },
-    {
-        path: "/detailsProductPage/:id",
-        element: <DetailsProductPage />
-    },
-    {
-        path: "/shoppingCartPage",
-        element: <ShoppingCartPage />
-    },
-    {
-        path: "/adminLoginPage",
-        element: <AdminLoginPage />
-    },
-    {
-        path: "/addProductAdmin",
-        element: <AddProductAdmin/>,
-        loader: () => authCheck("Admin") // avec le loader et grâce à la fonction authCheck, nous allons verifier avant chargement de la page si Admin est = à admin
-    }
+        element: <App/>,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/",
+                element: <HomePage />
+            },
+            {
+                path: "/detailsProductPage/:id",
+                element: <DetailsProductPage />
+            },
+            {
+                path: "/shoppingCartPage",
+                element: <ShoppingCartPage />
+            },
+            {
+                path: "/adminLoginPage",
+                element: <AddProductAdmin />
+            },
+            {
+                path: "/addProductAdmin",
+                element: <ProtectedRoute><AddProductAdmin/></ProtectedRoute>,
+            }
+          ],}
 ])
 
 export default router;

@@ -29,20 +29,18 @@ const DetailsProductPage = () =>{
         setCart(prev => [...prev, newProduct])
         console.log(cart);
 
-
-        navigate("/shoppingCartPage") 
-            
+        navigate("/shoppingCartPage")           
         }   
 
     return (
-        <>
-        <h1>Détails produits</h1>
-        <ul>       
-            <li>{product.title}</li>
-            <li>{product.details}</li>
-            <li>{product.price }</li>
-        </ul>
-            <button onClick={addCart}>Ajouter au panier</button>
+        <>  
+            <h1>Détails produits</h1>
+            <ul>       
+                <li>{product.title}</li>
+                <li>{product.details}</li>
+                <li>{product.price}€</li>
+            </ul>
+                <button onClick={addCart} className="btn btn-outline-success">Ajouter au panier</button>
         </>
     )
 }
